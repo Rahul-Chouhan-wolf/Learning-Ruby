@@ -250,18 +250,36 @@
 # p bubble_sort(arr)
 
 #-----------------------------Quick sort -------------------------------
-class Array
-    def quick_sort
-        return [] if empty?
-        pivot = delete_at(rand(size))
-        left , right = partition(&pivot.method(:>))
+# class Array
+#     def quick_sort
+#         return [] if empty?
+#         pivot = delete_at(rand(size))
+#         left , right = partition(&pivot.method(:>))
         
-        return [*left.quick_sort , pivot , *right.quick_sort]
+#         return [*left.quick_sort , pivot , *right.quick_sort]
+#     end
+# end
+
+# arr=[12,2,9,56,45,23,34,1,7,9,1]
+
+# p arr.quick_sort
+
+class Genre
+    genres = %w(fiction coding history)
+
+    genres.each do |genre|
+        define_method("#{genre}_method") do |arguments|
+            p "Genre : #{genre}"
+            p arguments
+            p object_id
+        end
     end
 end
 
-arr=[12,2,9,56,45,23,34,1,7,9,1]
+genre = Genre.new
 
-p arr.quick_sort
+genre.coding_method("Newport")
+genre.history_method("Zeus")
+genre.fiction_method("Luffy")
 
-
+p genre.respond_to?(:fiction_method)
