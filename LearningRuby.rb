@@ -70,4 +70,94 @@
 
 # p Hash[[1,2.99,43.3,3,2].map{|x| [x,x.to_i]}]
 
-p 
+# p Hash[%w(A string is here in this particular array).map{|i| [i,i.length]}]
+
+# out = {:a=>"food" , :b=>"Bar" }.map{ |a,b| "#{a}=#{b}"}.join('&')
+
+# p out
+
+#------------------inject------------------
+
+# arr = [ 1,2,3,4,100,1].inject(&:+)
+# p arr;
+
+# arr = [ 1,2,3,4,100,1].inject(&:*)
+# p arr;
+
+# arr = [ 20,10,2].inject(&:/)
+# p arr;
+
+# arr = [ 1,2,3,4,100,1].inject(&:-)
+# p arr;
+
+# arr = [1 ,true , "String" , false , 0.3432]
+# emptyarr =[]
+# unless emptyarr.empty?
+#     puts arr
+# end
+# unless arr.empty?
+#     puts arr
+# end
+
+# # -   -- - - -- - -- short version
+
+# arr.each {|i| puts i} unless arr.empty?
+
+#----------------OOps in ruby-----------------------------
+#attr_accessor
+# class ApiConnector 
+#     attr_accessor :title , :desc,:url
+
+#     def initialize(title, desc ,url)
+#         @title = title
+#         @desc = desc
+#         @url = url
+#         secret_method #private method can be run whenever we intialize 
+#     end
+    
+#     #This is thorwing error of circular arguments,may be because of ruby version
+#     # def initialize( title:title, desc:desc ,url:url) 
+#     #     @title = title
+#     #     @desc = desc
+#     #     @url = url
+#     # end
+#     private
+#         def secret_method
+#             puts "This is a secret method inside private class."
+#     end
+#     def testing_initializer
+#         puts @title
+#         puts @desc
+#         puts @url
+#     end
+#     #polymorphism
+#     def same_name
+#         puts "I am Sam Manuels from Main class"
+#     end
+
+# end
+
+# class EmailConnector < ApiConnector
+#     def show
+#         puts "#{@title}@mail.com"
+#     end 
+#     def same_name
+#         #By writing super here it will first call the parent class method
+#         super
+#         puts "I am Sam from Email connector."
+#     end
+# end
+
+# class HttpConnector < ApiConnector
+#     def show_url
+#         puts @url
+#     end
+# end
+
+# api = HttpConnector.new( "Mytitle", "My cool description" , "http:://google.com" )
+# email = EmailConnector.new("SecondTitle","this is my second time writing","somerandomurl.com")
+# email.same_name
+
+
+
+
